@@ -5,7 +5,7 @@ const CheckoutPage = () => {
   return (
     <>
 
-      <title>Checkout</title>
+      <title>SimpleCart - Checkout</title>
 
       <div className="checkout-header">
         <div className="header-content">
