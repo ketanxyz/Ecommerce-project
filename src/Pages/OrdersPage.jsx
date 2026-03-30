@@ -4,6 +4,9 @@ import './header.css'
 const OrdersPage = () => {
   return (
     <>
+
+      <title>Orders</title>
+
       <div className="header">
         <div className="left-section">
           <a href="/" className="header-link">
