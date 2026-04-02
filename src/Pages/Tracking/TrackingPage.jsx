@@ -5,7 +5,7 @@ const TrackingPage = () => {
   return (
     <>
 
-      <title>SimpleCart - Tracking</title>
+      <title>SimpleCart-Tracking</title>
 
       <Header />
 

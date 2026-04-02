@@ -2,13 +2,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import OrderSummary from "./OrderSummary";
 import PaymentSummary from "./PaymentSummary";
+import CheckoutHeader from "../../components/checkoutHeader";
 import "./CheckoutPage.css";
-import "./checkout-header.css";
+
 
 
 const CheckoutPage = ({ cart }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
-  const [payementSummary, setPaymentSummary] = useState(null);
+  const [paymentSummary, setPaymentSummary] = useState(null);
 
   useEffect(() => {
     const fetchCheckoutData = async () => {
@@ -28,28 +29,7 @@ const CheckoutPage = ({ cart }) => {
     <>
       <title>SimpleCart - Checkout</title>
 
-      <div className="checkout-header">
-        <div className="header-content">
-          <div className="checkout-header-left-section">
-            <a href="/">
-              <img className="logo" src="images/logo.png" />
-              <img className="mobile-logo" src="images/mobile-logo.png" />
-            </a>
-          </div>
-
-          <div className="checkout-header-middle-section">
-            Checkout (
-            <a className="return-to-home-link" href="/">
-              3 items
-            </a>
-            )
-          </div>
-
-          <div className="checkout-header-right-section">
-            <img src="images/icons/checkout-lock-icon.png" />
-          </div>
-        </div>
-      </div>
+      <CheckoutHeader cart={cart} />
 
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
@@ -57,7 +37,7 @@ const CheckoutPage = ({ cart }) => {
         <div className="checkout-grid">
           <OrderSummary cart={cart} deliveryOptions={deliveryOptions} />
 
-          <PaymentSummary payementSummary={payementSummary} />
+          <PaymentSummary paymentSummary={paymentSummary} />
         </div>
       </div>
     </>
