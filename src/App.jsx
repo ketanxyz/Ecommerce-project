@@ -5,6 +5,7 @@ import HomePage from "./Pages/home/HomePage";
 import CheckoutPage from "./Pages/checkout/CheckoutPage";
 import OrdersPage from "./Pages/orders/OrdersPage";
 import TrackingPage from "./Pages/Tracking/TrackingPage";
+import { NotFoundPage } from "./Pages/NotFoundPage";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -24,7 +25,8 @@ const App = () => {
       <Route path="/" element={<HomePage cart={cart} />} />
       <Route path="/checkout" element={<CheckoutPage cart={cart} />} />
       <Route path="/orders" element={<OrdersPage cart={cart} />} />
-      <Route path="/tracking" element={<TrackingPage cart={cart} />} />
+      <Route path="/tracking/:orderId/:productId" element={<TrackingPage cart={cart} />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
