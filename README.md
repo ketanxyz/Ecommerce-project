@@ -22,4 +22,40 @@ Built with a focus on clean UI, performance, and scalability, SimpleCart demonst
 - HTML5  
 - CSS3  
 - JavaScript (ES6+)  
-- React.js 
+- React.js
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (Mongoose ODM)
+
+🔹 Backend is maintained in a separate repository for better scalability and modularity.
+
+### 👉 Backend Repository:
+https://github.com/ketanxyz/SimpleCart-Backend
+
+## ⚙️ Running the Project Locally
+### 1️⃣ Clone the Repositories
+```bash
+# Frontend
+git clone https://github.com/ketanxyz/Ecommerce-project.git
+# Backend
+git clone https://github.com/ketanxyz/SimpleCart-Backend.git
+```
+
+### 2️⃣. Setup Backend
+```bash
+cd simplecart-backend
+
+npm install
+
+npm run dev
+```
+### 3️⃣. Setup Frontend
+```bash
+cd Ecommerce-project
+
+npm install
+
+npm run dev
+```
