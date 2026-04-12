@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import Header from "../../components/Header";
+import Header from "../../components/navbar/Header";
 import ProductsGrid from "./ProductsGrid";
 import "./HomePage.css";
+import FooterSection from "../../components/footer/FooterSection";
 
 const HomePage = ({ cart, loadCart }) => {
   const [products, setProducts] = useState([]);
@@ -29,6 +30,8 @@ const HomePage = ({ cart, loadCart }) => {
       <div className="home-page">
         <ProductsGrid products={products} loadCart={loadCart} />
       </div>
+
+      <FooterSection />
     </>
   );
 };

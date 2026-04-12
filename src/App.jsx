@@ -5,7 +5,7 @@ import HomePage from "./Pages/home/HomePage";
 import CheckoutPage from "./Pages/checkout/CheckoutPage";
 import OrdersPage from "./Pages/orders/OrdersPage";
 import TrackingPage from "./Pages/Tracking/TrackingPage";
-import { NotFoundPage } from "./Pages/NotFoundPage";
+import { NotFoundPage } from "./Pages/notfound/NotFoundPage";
 import './App.css';
 
 window.axios = axios;

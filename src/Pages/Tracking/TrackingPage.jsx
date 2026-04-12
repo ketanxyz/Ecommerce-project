@@ -2,7 +2,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import Header from '../../components/Header';
+import Header from '../../components/navbar/Header';
 import './TrackingPage.css'
 
 const TrackingPage = ({ cart }) => {

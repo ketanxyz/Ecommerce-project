@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Header from "../../components/Header";
+import Header from "../../components/navbar/Header";
 import "./OrdersPage.css";
 import OrdersGrid from "./OrdersGrid";
+import FooterSection from "../../components/footer/FooterSection";
 
 const OrdersPage = ({ cart, loadCart }) => {
   const [orders, setOrders] = useState([]);
@@ -29,6 +30,8 @@ const OrdersPage = ({ cart, loadCart }) => {
 
         <OrdersGrid orders={orders} loadCart={loadCart} />
       </div>
+
+      <FooterSection />      
     </>
   );
 };
