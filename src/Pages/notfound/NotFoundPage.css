@@ -1,6 +1,18 @@
-.not-found-message {
-  margin-top: 150px;
-  text-align: center;
-  font-size: 24px;
-  color: rgb(180, 180, 180);
+.not-found-page {
+  margin-top: 58px;
+  min-height: calc(100vh - 58px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 40px 20px;
+  background: #f9fafb;
 }
+.not-found-code { font-size: 120px; font-weight: 900; color: #e5e7eb; line-height: 1; margin-bottom: 8px; }
+.not-found-title { font-size: 28px; font-weight: 800; color: #111; margin: 0 0 12px; }
+.not-found-msg { font-size: 16px; color: #6b7280; margin-bottom: 28px; }
+.not-found-btn {
+  background: #0a6b3d; color: white;
+  padding: 12px 32px; border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none; transition: background 0.15s;
+}
+.not-found-btn:hover { background: #085f35; }

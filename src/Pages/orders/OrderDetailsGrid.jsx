@@ -1,54 +1,55 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { Fragment } from 'react';
+import { useNavigate } from 'react-router';
 
 const OrderDetailsGrid = ({ order, loadCart }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="order-details-grid">
-      {order.products.map((orderProduct) => {
+      {order.products.map((orderProduct, idx) => {
         const addToCart = async () => {
-          await axios.post('/api/cart-items', {
-            productId: orderProduct.product.id,
-            quantity: 1
-          });
+          await axios.post('/api/cart-items', { productId: orderProduct.product.id, quantity: 1 });
           await loadCart();
-        }
-
+        };
 
         return (
           <Fragment key={orderProduct.product.id}>
+            {/* Separator between items */}
+            {idx > 0 && <div className="order-product-sep" />}
+
             <div className="product-image-container">
-              <img src={orderProduct.product.image} />
+              <img src={orderProduct.product.image} alt={orderProduct.product.name} />
             </div>
 
             <div className="product-details">
-              <div className="product-name">
-                {orderProduct.product.name}
-              </div>
+              <div className="product-name">{orderProduct.product.name}</div>
               <div className="product-delivery-date">
-                Arriving on: {dayjs(orderProduct.estimatedDeliveryTimeMs).format('MMMM D')}
+                {dayjs(orderProduct.estimatedDeliveryTimeMs).isAfter(dayjs())
+                  ? `Arriving ${dayjs(orderProduct.estimatedDeliveryTimeMs).format('MMM D')}`
+                  : `Delivered ${dayjs(orderProduct.estimatedDeliveryTimeMs).format('MMM D')}`}
               </div>
-              <div className="product-quantity">
-                Quantity: {orderProduct.quantity}
-              </div>
-              <button className="buy-again-button button-primary" onClick={addToCart}>
-                <img className="buy-again-icon" src="images/icons/buy-again.png" />
-                <span className="buy-again-message">Add to Cart</span>
+              <div className="product-quantity">Qty: {orderProduct.quantity}</div>
+              <button className="buy-again-button" onClick={addToCart}>
+                <img className="buy-again-icon" src="/images/icons/buy-again.png" alt="" />
+                Add to Cart
               </button>
             </div>
 
             <div className="product-actions">
-              <a href={`/tracking/${order.id}/${orderProduct.product.id}`}>
-                <button className="track-package-button button-secondary">
-                  Track package
-                </button>
-              </a>
+              <button
+                className="track-package-button"
+                onClick={() => navigate(`/tracking/${order.id}/${orderProduct.product.id}`)}
+              >
+                Track Package
+              </button>
             </div>
           </Fragment>
         );
       })}
-    </div>    
-  )
-}
+    </div>
+  );
+};
 
-export default OrderDetailsGrid
+export default OrderDetailsGrid;

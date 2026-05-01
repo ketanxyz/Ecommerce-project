@@ -1,121 +1,73 @@
+/* ═══════════════════════════════════════════
+   GLOBAL RESET & BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Prevent horizontal overflow at the document level */
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
-  font-family: Roboto, Arial;
-  color: rgb(33, 33, 33);
-  /* The <body> element has a default margin of 8px
-     on all sides. This removes the default margins. */
-  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  color: #111827;
+  background: #f9fafb;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Hard lock — nothing escapes the body width */
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
-:root {
-  --green-dark:   #1b5e38;
-  --green-mid:    #236b43;
-  --green-light:  #2d8653;
-  --green-accent: #3aab6a;
-  --green-border: rgba(255,255,255,0.12);
-  --text-main:    #e8f5ee;
-  --text-muted:   rgba(232,245,238,0.62);
-  --inner-max:    1240px;
-  --pad-h:        40px;
-  --radius-sm:    6px;
-  --radius-md:    10px;
-  --transition:   0.2s ease;
-}
+img  { max-width: 100%; display: block; }
+a    { color: inherit; }
+button { cursor: pointer; }
 
-/* Remove the default margins of <p> elements. */
-p {
-  margin: 0;
-}
+/* ── Utilities ── */
+.link-primary { color: #0a6b3d; text-decoration: none; cursor: pointer; }
+.link-primary:hover { text-decoration: underline; }
 
-button {
-  font-size: 14px;
-  cursor: pointer;
-}
-
-select {
-  cursor: pointer;
-}
-
-input, select, button {
-  font-family: Roboto, Arial;
-}
-
-.button-primary {
-  color: rgb(255, 255, 255);
-  background-color: rgb(25, 135, 84);
-  border: 1px solid transparent;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(220, 220, 220, 0.5);
-}
-
-.button-primary:hover {
-  background-color: rgba(25, 135, 84, 0.75);
-  border: 1px solid transparent;
-}
-
-.button-primary:active {
-  background: rgba(25, 135, 84, 0.5);
-  border-color: transparent;
-  box-shadow: none;
-}
-
-.button-secondary {
-  color: rgb(33, 33, 33);
-  background: white;
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(220, 220, 220, 0.2);
-}
-
-.button-secondary:hover {
-  background-color: rgb(250, 250, 250);
-}
-
-.button-secondary:active {
-  background-color: rgb(240, 240, 240);
-  box-shadow: none;
-}
-
-/* These styles will limit text to 2 lines. Anything
-   beyond 2 lines will be replaced with "..."
-   You can find this code by using an A.I. tool or by
-   searching in Google.
-   https://css-tricks.com/almanac/properties/l/line-clamp/ */
 .limit-text-to-2-lines {
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.link-primary {
-  color: rgb(25, 135, 84);
-  cursor: pointer;
+.button-primary {
+  background: #0a6b3d; color: white; border: none;
+  padding: 8px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: background 0.15s;
 }
+.button-primary:hover { background: #085f35; }
 
-.link-primary:hover {
-  opacity: 0.75;
+.button-secondary {
+  background: white; color: #0a6b3d;
+  border: 1.5px solid #0a6b3d;
+  padding: 8px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: background 0.15s, color 0.15s;
 }
+.button-secondary:hover { background: #0a6b3d; color: white; }
 
-.link-primary:active {
-  opacity: 0.5;
-}
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a1a1a1; }
 
-/* Styles for dropdown selectors. */
-select {
-  color: rgb(33, 33, 33);
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 5px;
-  padding: 3px 5px;
-  font-size: 15px;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(200, 200, 200, 0.2);
-}
-
-select:focus,
-input:focus {
-  outline: 2px solid rgb(25, 135, 84);
+/* ── Mobile: prevent iOS input zoom ── */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }
